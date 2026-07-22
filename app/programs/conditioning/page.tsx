@@ -1,0 +1,2 @@
+import { ProgramPage } from "@/components/program-page"
+export default function Page(){return <ProgramPage eyebrow="Conditioning" title="More stamina for life" description="Combine cardio and functional movement to improve endurance, work capacity and everyday energy." image="/images/gallery-2.png" idealFor="A flexible option for fat-loss goals, improved heart health, sport preparation or simply feeling fitter throughout your day." benefits={["Modern cardio equipment","Functional training zone","Scalable intensity","Endurance-focused sessions"]}/>}
