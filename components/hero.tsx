@@ -1,13 +1,17 @@
 import { ArrowRight, Play } from "lucide-react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 
 export function Hero() {
   return (
     <section className="relative isolate flex min-h-screen items-center overflow-hidden pt-16">
       <div className="absolute inset-0 -z-10">
-        <img
+        <Image
           src="/images/hero-gym.png"
           alt="Athlete performing a heavy barbell deadlift in a dark industrial gym"
+          fill
+          priority
+          sizes="100vw"
           className="size-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
@@ -20,7 +24,7 @@ export function Hero() {
             Open 24/7 · Andheri West · Mumbai
           </span>
           <h1 className="mt-6 font-heading text-5xl font-bold uppercase leading-[0.95] tracking-tight text-balance sm:text-7xl lg:text-8xl">
-            Fitness that <span className="text-primary">never clocks out</span>
+            Fitness that <span className="text-accent">never clocks out</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty">
             World-class equipment, expert coaches and a welcoming local community—ready whenever
@@ -31,7 +35,7 @@ export function Hero() {
             <Button
               size="lg"
               className="h-12 px-6 font-heading text-base font-semibold uppercase tracking-wide"
-              render={<a href="#memberships" />}
+              render={<a href="/contact" />}
             >
               Claim a Free Day Pass
               <ArrowRight className="size-4" />
@@ -40,7 +44,7 @@ export function Hero() {
               size="lg"
               variant="outline"
               className="h-12 px-6 font-heading text-base font-semibold uppercase tracking-wide"
-              render={<a href="#gallery" />}
+              render={<a href="/gallery" />}
             >
               <Play className="size-4" />
               Tour the Floor

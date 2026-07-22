@@ -98,7 +98,7 @@ export function Membership() {
                 size="lg"
                 variant={plan.featured ? "default" : "outline"}
                 className="mt-8 h-11 w-full font-heading font-semibold uppercase tracking-wide"
-                render={<a href="#contact" />}
+                render={<a href="/contact" />}
               >
                 Ask About Membership
               </Button>

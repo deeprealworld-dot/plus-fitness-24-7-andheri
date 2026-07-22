@@ -41,10 +41,12 @@ export function Trainers() {
               key={trainer.name}
               className="group relative overflow-hidden rounded-xl border border-border"
             >
-              <div className="aspect-[4/5] overflow-hidden">
-                <img
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Image
                   src={trainer.image || "/placeholder.svg"}
                   alt={`${trainer.name}, ${trainer.role}`}
+                  fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
@@ -58,7 +60,9 @@ export function Trainers() {
                 <div className="mt-1 flex items-center justify-between">
                   <p className="text-sm text-muted-foreground">{trainer.role}</p>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/plusfitness24x7andheri/"
+                    target="_blank"
+                    rel="noreferrer"
                     aria-label={`${trainer.name} on Instagram`}
                     className="text-muted-foreground transition-colors hover:text-primary"
                   >
@@ -86,3 +90,4 @@ export function Trainers() {
     </section>
   )
 }
+import Image from "next/image"

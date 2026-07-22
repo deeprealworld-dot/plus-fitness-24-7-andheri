@@ -56,32 +56,52 @@
   --card-foreground: oklch(0.97 0.005 250);
   --popover: oklch(0.21 0.006 250);
   --popover-foreground: oklch(0.97 0.005 250);
-  --primary: oklch(0.88 0.21 125);
-  --primary-foreground: oklch(0.2 0.05 130);
+  --primary: oklch(0.67 0.14 218);
+  --primary-foreground: oklch(0.99 0 0);
   --secondary: oklch(0.27 0.006 250);
   --secondary-foreground: oklch(0.97 0.005 250);
   --muted: oklch(0.27 0.006 250);
   --muted-foreground: oklch(0.7 0.01 250);
-  --accent: oklch(0.88 0.21 125);
-  --accent-foreground: oklch(0.2 0.05 130);
+  --accent: oklch(0.79 0.17 126);
+  --accent-foreground: oklch(0.18 0.04 130);
   --destructive: oklch(0.62 0.22 25);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.88 0.21 125);
-  --chart-1: oklch(0.88 0.21 125);
-  --chart-2: oklch(0.7 0.01 250);
+  --ring: oklch(0.67 0.14 218);
+  --chart-1: oklch(0.67 0.14 218);
+  --chart-2: oklch(0.79 0.17 126);
   --chart-3: oklch(0.55 0.01 250);
   --chart-4: oklch(0.4 0.01 250);
   --chart-5: oklch(0.3 0.01 250);
   --radius: 0.4rem;
   --sidebar: oklch(0.21 0.006 250);
   --sidebar-foreground: oklch(0.97 0.005 250);
-  --sidebar-primary: oklch(0.88 0.21 125);
-  --sidebar-primary-foreground: oklch(0.2 0.05 130);
+  --sidebar-primary: oklch(0.67 0.14 218);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
   --sidebar-accent: oklch(0.27 0.006 250);
   --sidebar-accent-foreground: oklch(0.97 0.005 250);
   --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.88 0.21 125);
+  --sidebar-ring: oklch(0.67 0.14 218);
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 8%, oklch(0.67 0.14 218 / 10%), transparent 30rem),
+    radial-gradient(circle at 92% 22%, oklch(0.79 0.17 126 / 8%), transparent 28rem),
+    var(--background);
+}
+
+.brand-panel {
+  background: linear-gradient(135deg, oklch(0.23 0.045 225), oklch(0.18 0.025 180));
+  border-color: oklch(0.67 0.14 218 / 35%);
+}
+
+.brand-rule {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
+::selection {
+  background: oklch(0.79 0.17 126 / 35%);
 }
 
 @layer base {

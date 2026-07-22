@@ -4,9 +4,9 @@ import { SiteFooter } from "@/components/site-footer"
 import { Contact } from "@/components/contact"
 
 export const metadata: Metadata = {
-  title: "Contact — IRONPULSE",
+  title: "Contact Plus Fitness 24/7 Andheri",
   description:
-    "Get in touch with IRONPULSE. Claim your free 3-day pass, find our location and hours, or reach our team directly.",
+    "Contact Plus Fitness 24/7 Andheri, request a free day pass, find the club and view staffed hours.",
 }
 
 export default function ContactPage() {
