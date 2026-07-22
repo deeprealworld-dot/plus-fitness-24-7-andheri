@@ -2,9 +2,9 @@ import type { Metadata } from "next"
 import { PageShell } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Plus Fitness Andheri",
+  title: "Privacy Policy — IRONPULSE",
   description:
-    "Understand how the Plus Fitness Andheri website handles enquiry information.",
+    "Read the IRONPULSE privacy policy to understand how we collect, use, and protect your personal information.",
 }
 
 const sections = [
@@ -18,7 +18,7 @@ const sections = [
   {
     heading: "How We Use Your Information",
     body: [
-      "We use the information we collect to respond to enquiries, arrange club visits or trials, provide membership information and improve our service.",
+      "We use the information we collect to provide and improve our services, schedule sessions and tours, respond to your inquiries, process memberships, and send you relevant updates about IRONPULSE.",
       "We may also use your information to personalize your experience and to comply with legal obligations.",
     ],
   },
@@ -26,7 +26,7 @@ const sections = [
     heading: "Sharing Your Information",
     body: [
       "We do not sell your personal information. We may share your information with trusted service providers who help us operate our business, such as payment processors and scheduling platforms, and only to the extent necessary to perform their services.",
-      "We may also disclose information when required by law or to protect the rights, property and safety of the club, our members and the public.",
+      "We may also disclose information when required by law or to protect the rights, property, and safety of IRONPULSE, our members, and the public.",
     ],
   },
   {
@@ -44,7 +44,7 @@ const sections = [
   {
     heading: "Contact Us",
     body: [
-      "If you have questions about this policy or your information, call Plus Fitness Andheri on +91 90820 92919 or visit the club at 12A, Chandak Unicorn, Dattaji Salve Marg, Andheri West, Mumbai 400053.",
+      "If you have any questions about this Privacy Policy or how we handle your information, please reach out to us at join@ironpulse.fit or visit us at 412 Forge Street, Downtown District.",
     ],
   },
 ]
@@ -54,7 +54,7 @@ export default function PrivacyPage() {
     <PageShell
       eyebrow="Privacy Policy"
       title="Your privacy matters to us"
-      description="This policy explains what information this demonstration website may collect, how it is used and the choices you have. Last updated July 2026."
+      description="This policy explains what information we collect, how we use it, and the choices you have. Last updated January 2026."
     >
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

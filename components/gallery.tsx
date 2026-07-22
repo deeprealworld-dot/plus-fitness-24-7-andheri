@@ -25,13 +25,11 @@ export function Gallery() {
           {images.map((img) => (
             <div
               key={img.src}
-              className={`group relative overflow-hidden rounded-xl border border-border ${img.className}`}
+              className={`group overflow-hidden rounded-xl border border-border ${img.className}`}
             >
-              <Image
+              <img
                 src={img.src || "/placeholder.svg"}
                 alt={img.alt}
-                fill
-                sizes="(min-width: 640px) 50vw, 100vw"
                 className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
@@ -41,4 +39,3 @@ export function Gallery() {
     </section>
   )
 }
-import Image from "next/image"

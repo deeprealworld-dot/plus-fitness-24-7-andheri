@@ -1,29 +1,28 @@
 import { Dumbbell } from "lucide-react"
-import Link from "next/link"
 
 const socials = [
-  { name: "Instagram", icon: "/icons/instagram.svg", href: "https://www.instagram.com/plusfitness24x7andheri/" },
-  { name: "Facebook", icon: "/icons/facebook.svg", href: "https://www.facebook.com/plusfitness24x7andheri/" },
-  { name: "YouTube", icon: "/icons/youtube.svg", href: "https://www.youtube.com/@plusfitnessindia" },
+  { name: "Instagram", icon: "/icons/instagram.svg" },
+  { name: "Facebook", icon: "/icons/facebook.svg" },
+  { name: "YouTube", icon: "/icons/youtube.svg" },
 ]
 
 const columns = [
   {
     title: "Explore",
     links: [
-      { label: "Memberships", href: "/memberships" },
-      { label: "Trainers", href: "/trainers" },
-      { label: "Gallery", href: "/gallery" },
-      { label: "FAQ", href: "/faq" },
+      { label: "Memberships", href: "/#memberships" },
+      { label: "Trainers", href: "/#trainers" },
+      { label: "Gallery", href: "/#gallery" },
+      { label: "FAQ", href: "/#faq" },
     ],
   },
   {
     title: "Programs",
     links: [
-      { label: "Strength", href: "/programs/strength" },
-      { label: "Conditioning", href: "/programs/conditioning" },
-      { label: "Personal Training", href: "/programs/personal-training" },
-      { label: "Group Classes", href: "/programs/group-classes" },
+      { label: "Strength", href: "#" },
+      { label: "Conditioning", href: "#" },
+      { label: "Personal Training", href: "#" },
+      { label: "Group Classes", href: "#" },
     ],
   },
   {
@@ -39,19 +38,18 @@ const columns = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden border-t border-primary/25 bg-[#07141c]">
-      <div className="brand-rule absolute inset-x-0 top-0 h-1" />
+    <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               <span className="flex size-8 items-center justify-center rounded bg-primary text-primary-foreground">
                 <Dumbbell className="size-5" />
               </span>
               <span className="font-heading text-xl font-bold uppercase tracking-wider">
-                <span className="text-primary">Plus</span> <span className="text-accent">Fitness</span>
+                Plus <span className="text-primary">Fitness</span>
               </span>
-            </Link>
+            </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
               World-class equipment, expert trainers and 24/7 access in the heart of Andheri West.
             </p>
@@ -59,9 +57,7 @@ export function SiteFooter() {
               {socials.map((social) => (
                 <a
                   key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#"
                   aria-label={social.name}
                   className="flex size-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 >
@@ -92,12 +88,12 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <Link
+                    <a
                       href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-accent"
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {link.label}
-                    </Link>
+                    </a>
                   </li>
                 ))}
               </ul>
