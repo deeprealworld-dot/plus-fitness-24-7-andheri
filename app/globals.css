@@ -84,6 +84,22 @@
   --sidebar-ring: oklch(0.67 0.14 218);
 }
 
+body {
+  background:
+    radial-gradient(circle at 8% 8%, oklch(0.67 0.14 218 / 10%), transparent 30rem),
+    radial-gradient(circle at 92% 22%, oklch(0.79 0.17 126 / 8%), transparent 28rem),
+    var(--background);
+}
+
+.brand-panel {
+  background: linear-gradient(135deg, oklch(0.23 0.045 225), oklch(0.18 0.025 180));
+  border-color: oklch(0.67 0.14 218 / 35%);
+}
+
+.brand-rule {
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+}
+
 ::selection {
   background: oklch(0.79 0.17 126 / 35%);
 }

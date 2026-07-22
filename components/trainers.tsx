@@ -60,7 +60,9 @@ export function Trainers() {
                 <div className="mt-1 flex items-center justify-between">
                   <p className="text-sm text-muted-foreground">{trainer.role}</p>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/plusfitness24x7andheri/"
+                    target="_blank"
+                    rel="noreferrer"
                     aria-label={`${trainer.name} on Instagram`}
                     className="text-muted-foreground transition-colors hover:text-primary"
                   >
