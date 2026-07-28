@@ -17,16 +17,18 @@ export function PageShell({
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main>
-        <section className="border-b border-border/60 bg-card/40 pt-32 pb-16 sm:pt-40 sm:pb-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+        <section className="relative isolate overflow-hidden border-b border-white/[0.06] bg-card/30 pb-20 pt-36 sm:pb-24 sm:pt-44">
+          <div className="hero-mesh absolute -inset-x-20 -bottom-[85%] -z-10 h-[150%]" />
+          <div className="absolute right-[8%] top-[28%] -z-10 size-56 rounded-full bg-primary/10 blur-3xl" />
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+            <span className="section-kicker text-primary">
               {eyebrow}
             </span>
-            <h1 className="mt-3 max-w-3xl font-heading text-4xl font-bold uppercase tracking-tight text-balance sm:text-5xl lg:text-6xl">
+            <h1 className="mt-6 max-w-5xl font-heading text-5xl font-bold uppercase leading-[0.9] tracking-[-0.04em] text-balance sm:text-7xl lg:text-8xl">
               {title}
             </h1>
             {description ? (
-              <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground text-pretty">
+              <p className="mt-7 max-w-2xl border-l border-primary/50 pl-5 text-lg leading-relaxed text-muted-foreground text-pretty">
                 {description}
               </p>
             ) : null}

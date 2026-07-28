@@ -45,47 +45,50 @@ const plans = [
 
 export function Membership() {
   return (
-    <section id="memberships" className="scroll-mt-16 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+    <section id="memberships" className="scroll-mt-20 border-t border-white/[0.06] py-24 sm:py-32">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+          <div>
+          <span className="section-kicker text-primary">
             Memberships
           </span>
-          <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-tight text-balance sm:text-5xl">
+          <h2 className="mt-5 max-w-3xl font-heading text-5xl font-bold uppercase leading-[0.92] tracking-[-0.035em] text-balance sm:text-6xl">
             Membership built around you
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
+          </div>
+          <p className="max-w-xl border-l border-white/10 pl-6 text-lg leading-relaxed text-muted-foreground text-pretty lg:justify-self-end">
             Contact the Andheri club for current membership offers and a plan that fits your routine.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 lg:grid-cols-3">
-          {plans.map((plan) => (
+        <div className="mt-16 grid gap-4 lg:grid-cols-3">
+          {plans.map((plan, index) => (
             <div
               key={plan.name}
               className={cn(
-                "relative flex flex-col rounded-xl border p-8",
+                "premium-card relative flex min-h-[520px] flex-col rounded-2xl border p-7 sm:p-8",
                 plan.featured
-                  ? "border-primary bg-card shadow-[0_0_0_1px] shadow-primary/40"
-                  : "border-border bg-card",
+                  ? "brand-panel border-primary/50 lg:-translate-y-4"
+                  : "border-border bg-card/65",
               )}
             >
+              <span className="number-watermark absolute right-5 top-7">0{index + 1}</span>
               {plan.featured && (
-                <span className="absolute -top-3 left-8 rounded-full bg-primary px-3 py-1 text-xs font-bold uppercase tracking-wide text-primary-foreground">
+                <span className="absolute right-6 top-6 rounded-full bg-primary px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground">
                   Most Popular
                 </span>
               )}
-              <h3 className="font-heading text-2xl font-bold uppercase tracking-wide">
+              <h3 className="relative mt-28 font-heading text-3xl font-bold uppercase tracking-[-0.02em]">
                 {plan.name}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              <p className="mt-3 max-w-xs text-sm leading-relaxed text-muted-foreground">
                 {plan.description}
               </p>
-              <div className="mt-6 flex items-baseline gap-1">
-                <span className="font-heading text-5xl font-bold">{plan.price}</span>
+              <div className="mt-7 flex items-baseline gap-1 border-b border-white/10 pb-6">
+                <span className="font-heading text-4xl font-bold">{plan.price}</span>
               </div>
 
-              <ul className="mt-8 flex flex-1 flex-col gap-3">
+              <ul className="mt-6 flex flex-1 flex-col gap-3">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm">
                     <Check className="mt-0.5 size-4 shrink-0 text-primary" />
@@ -97,7 +100,7 @@ export function Membership() {
               <Button
                 size="lg"
                 variant={plan.featured ? "default" : "outline"}
-                className="mt-8 h-11 w-full font-heading font-semibold uppercase tracking-wide"
+                className="mt-8 h-11 w-full rounded-lg font-heading font-semibold uppercase tracking-[0.1em]"
                 render={<a href="/contact" />}
               >
                 Ask About Membership

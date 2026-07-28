@@ -21,37 +21,39 @@ const trainers = [
 
 export function Trainers() {
   return (
-    <section id="trainers" className="scroll-mt-16 bg-card/40 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
+    <section id="trainers" className="scroll-mt-20 border-y border-white/[0.06] bg-card/30 py-24 sm:py-32">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+          <div>
+          <span className="section-kicker text-primary">
             The Team
           </span>
-          <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-tight text-balance sm:text-5xl">
+          <h2 className="mt-5 max-w-3xl font-heading text-5xl font-bold uppercase leading-[0.92] tracking-[-0.035em] text-balance sm:text-6xl">
             Your Andheri coaching team
           </h2>
-          <p className="mt-4 text-lg leading-relaxed text-muted-foreground text-pretty">
+          </div>
+          <p className="max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty lg:justify-self-end">
             Certified, experienced, and obsessed with your progress. Meet the people in your corner.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {trainers.map((trainer) => (
+        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+          {trainers.map((trainer, index) => (
             <div
               key={trainer.name}
-              className="group relative overflow-hidden rounded-xl border border-border"
+              className={`group premium-card relative overflow-hidden rounded-2xl border border-border ${index === 0 ? "lg:col-span-5" : index === 1 ? "lg:col-span-4" : "lg:col-span-3"}`}
             >
-              <div className="relative aspect-[4/5] overflow-hidden">
+              <div className={`relative overflow-hidden ${index === 0 ? "aspect-[4/5] lg:aspect-[5/6]" : "aspect-[4/5]"}`}>
                 <Image
                   src={trainer.image || "/placeholder.svg"}
                   alt={`${trainer.name}, ${trainer.role}`}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="size-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="size-full object-cover saturate-[0.82] transition duration-700 group-hover:scale-105 group-hover:saturate-100"
                 />
               </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/80 to-transparent p-6 pt-16">
-                <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/85 to-transparent p-6 pt-24">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary">
                   {trainer.specialty}
                 </p>
                 <h3 className="mt-1 font-heading text-2xl font-bold uppercase tracking-wide">

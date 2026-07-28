@@ -86,13 +86,18 @@
 
 body {
   background:
-    radial-gradient(circle at 8% 8%, oklch(0.67 0.14 218 / 10%), transparent 30rem),
-    radial-gradient(circle at 92% 22%, oklch(0.79 0.17 126 / 8%), transparent 28rem),
+    radial-gradient(circle at 8% 8%, oklch(0.67 0.14 218 / 12%), transparent 32rem),
+    radial-gradient(circle at 92% 22%, oklch(0.79 0.17 126 / 9%), transparent 30rem),
     var(--background);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 .brand-panel {
-  background: linear-gradient(135deg, oklch(0.23 0.045 225), oklch(0.18 0.025 180));
+  background:
+    linear-gradient(135deg, oklch(0.23 0.045 225 / 92%), oklch(0.18 0.025 180 / 92%)),
+    linear-gradient(90deg, oklch(1 0 0 / 4%) 1px, transparent 1px);
+  background-size: auto, 28px 28px;
   border-color: oklch(0.67 0.14 218 / 35%);
 }
 
@@ -104,6 +109,139 @@ body {
   background: oklch(0.79 0.17 126 / 35%);
 }
 
+.glass-surface {
+  border: 1px solid oklch(1 0 0 / 10%);
+  background: oklch(0.13 0.008 250 / 72%);
+  box-shadow: 0 24px 80px oklch(0 0 0 / 35%);
+  backdrop-filter: blur(14px);
+}
+
+.hero-mesh {
+  background-image:
+    linear-gradient(oklch(1 0 0 / 5%) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 5%) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: linear-gradient(to bottom, black, transparent 82%);
+  transform: perspective(700px) rotateX(64deg) scale(1.55);
+  transform-origin: center bottom;
+}
+
+.orbital-mark {
+  animation: orbital-spin 24s linear infinite;
+}
+
+.orbital-mark::before,
+.orbital-mark::after {
+  content: "";
+  position: absolute;
+  inset: 15%;
+  border: 1px solid currentColor;
+  border-radius: 44% 56% 58% 42%;
+}
+
+.orbital-mark::after {
+  inset: 30%;
+  border-radius: 62% 38% 44% 56%;
+  animation: orbital-spin 13s linear infinite reverse;
+}
+
+.reveal-up {
+  animation: reveal-up 700ms cubic-bezier(.2,.75,.2,1) both;
+}
+
+.reveal-up-delay {
+  animation: reveal-up 700ms 140ms cubic-bezier(.2,.75,.2,1) both;
+}
+
+.reveal-up-delay-2 {
+  animation: reveal-up 700ms 260ms cubic-bezier(.2,.75,.2,1) both;
+}
+
+.section-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+}
+
+.section-kicker::before {
+  content: "";
+  width: 2.25rem;
+  height: 1px;
+  background: currentColor;
+}
+
+.premium-card {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 350ms cubic-bezier(.2,.75,.2,1),
+    border-color 350ms ease,
+    box-shadow 350ms ease;
+}
+
+.premium-card::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: linear-gradient(135deg, oklch(1 0 0 / 5%), transparent 44%);
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+.premium-card:hover {
+  transform: translateY(-4px);
+  border-color: oklch(0.67 0.14 218 / 55%);
+  box-shadow: 0 24px 64px oklch(0 0 0 / 30%);
+}
+
+.premium-card:hover::before {
+  opacity: 1;
+}
+
+.number-watermark {
+  font-family: var(--font-oswald), sans-serif;
+  font-size: clamp(5rem, 12vw, 9rem);
+  line-height: .7;
+  letter-spacing: -.06em;
+  color: oklch(1 0 0 / 4%);
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes orbital-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -113,5 +251,6 @@ body {
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
   }
 }
