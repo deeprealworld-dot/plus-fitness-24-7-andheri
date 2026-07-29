@@ -140,7 +140,7 @@ export function BrutalistHome() {
 
       <header className="hard-shadow sticky top-0 z-50 border-b-2 border-[var(--ink)] bg-[var(--paper)]">
         <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-2 px-4 sm:px-6">
-          <Link href="/" className="focus-ring shrink-0" aria-label="Plus Fitness Andheri home">
+          <Link href="/" className="focus-ring flex min-h-11 shrink-0 items-center" aria-label="Plus Fitness Andheri home">
             <span className="font-display hidden text-2xl tracking-tighter md:block">
               <span className="text-[var(--signal-red)]">+</span> Plus Fitness / 24·7 Andheri
             </span>
@@ -284,9 +284,9 @@ export function BrutalistHome() {
         </section>
 
         <div className="marquee-container relative z-20 border-y-2 border-[var(--ink)] bg-[var(--ink)] py-4 md:py-6">
-          <div className="marquee-content font-display flex gap-8 text-xl text-[var(--acid)] md:gap-12 md:text-4xl">
+          <div className="marquee-content font-display text-xl text-[var(--acid)] md:text-4xl">
             {[0, 1].map((set) => (
-              <span className="contents" key={set} aria-hidden={set === 1}>
+              <span className="marquee-group" key={set} aria-hidden={set === 1}>
                 <span>Built for performance</span>
                 <span className="opacity-40">/</span>
                 <span>No long-term contracts</span>
@@ -361,7 +361,7 @@ export function BrutalistHome() {
               <p className="mb-5 text-sm font-medium">
                 Custom roadmaps for fat loss, muscle gain or athletic performance.
               </p>
-              <a href="#trial" className="focus-ring py-2 text-xs font-bold tracking-widest underline md:text-sm">
+              <a href="#trial" className="focus-ring inline-flex min-h-11 items-center py-2 text-xs font-bold tracking-widest underline md:text-sm">
                 Book session
               </a>
             </article>
@@ -821,22 +821,22 @@ export function BrutalistHome() {
               </h3>
               <ul className="space-y-1 text-[9px] font-bold uppercase tracking-widest text-white/60 md:space-y-4 md:text-sm">
                 <li>
-                  <Link className="focus-ring inline-block py-2 hover:text-white" href="/about">
+                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/about">
                     About us
                   </Link>
                 </li>
                 <li>
-                  <a className="focus-ring inline-block py-2 hover:text-white" href="#membership">
+                  <a className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="#membership">
                     Memberships
                   </a>
                 </li>
                 <li>
-                  <Link className="focus-ring inline-block py-2 hover:text-white" href="/careers">
+                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/careers">
                     Careers
                   </Link>
                 </li>
                 <li>
-                  <Link className="focus-ring inline-block py-2 hover:text-white" href="/programs">
+                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/programs">
                     Programs
                   </Link>
                 </li>
@@ -849,17 +849,17 @@ export function BrutalistHome() {
               </h3>
               <ul className="space-y-1 text-[9px] font-bold uppercase tracking-widest text-white/60 md:space-y-4 md:text-sm">
                 <li>
-                  <Link className="focus-ring inline-block py-2 hover:text-white" href="/faq">
+                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/faq">
                     FAQs
                   </Link>
                 </li>
                 <li>
-                  <Link className="focus-ring inline-block py-2 hover:text-white" href="/privacy">
+                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/privacy">
                     Privacy policy
                   </Link>
                 </li>
                 <li>
-                  <Link className="focus-ring inline-block py-2 hover:text-white" href="/contact">
+                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/contact">
                     Contact
                   </Link>
                 </li>
@@ -886,7 +886,7 @@ export function BrutalistHome() {
                 href="https://deepwebstudios.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="focus-ring hover:text-white"
+                className="focus-ring inline-flex min-h-11 items-center hover:text-white"
               >
                 Website by DeepWebStudios
               </a>

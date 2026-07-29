@@ -328,6 +328,15 @@ body {
   display: flex;
   width: max-content;
   animation: brutalist-marquee 24s linear infinite;
+  will-change: transform;
+}
+
+.brutalist-page .marquee-group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
 }
 
 .brutalist-page .halftone {
@@ -398,11 +407,18 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .brutalist-page .marquee-content {
-    animation: none;
+    animation: brutalist-marquee 48s linear infinite !important;
   }
 
   .brutalist-page .stagger-reveal > * {
     opacity: 1;
     animation: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .brutalist-page .marquee-group {
+    gap: 3rem;
+    padding-right: 3rem;
   }
 }
