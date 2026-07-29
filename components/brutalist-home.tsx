@@ -2,10 +2,12 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import {
   ArrowRight,
+  CalendarDays,
   Check,
+  Clock,
   LockKeyhole,
   MapPin,
   Menu,
@@ -26,9 +28,22 @@ const mapUrl =
 const navLinks = [
   { label: "Memberships", href: "#membership" },
   { label: "Classes", href: "#classes" },
+  { label: "Book", href: "#book-class" },
   { label: "Trainers", href: "#trainers" },
   { label: "Location", href: "#location" },
 ]
+
+const bookableClasses = [
+  "HIIT Burn",
+  "Power Lift",
+  "Boxing",
+  "Zumba",
+  "Yoga Flow",
+  "Tabata",
+  "Complimentary gym trial",
+]
+
+const bookingSlots = ["07:00", "08:30", "18:00", "19:30", "21:00"]
 
 const plans = [
   {
@@ -116,6 +131,16 @@ const trainers = [
 
 export function BrutalistHome() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [bookingTime, setBookingTime] = useState("18:00")
+  const [minimumBookingDate, setMinimumBookingDate] = useState("")
+
+  useEffect(() => {
+    const now = new Date()
+    const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60_000)
+      .toISOString()
+      .slice(0, 10)
+    setMinimumBookingDate(localDate)
+  }, [])
 
   function handleEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -125,6 +150,26 @@ export function BrutalistHome() {
       `Name: ${data.get("name")}`,
       `Mobile: ${data.get("mobile")}`,
       `Goal: ${data.get("goal")}`,
+    ].join("\n")
+
+    window.open(
+      `${whatsappUrl}?text=${encodeURIComponent(message)}`,
+      "_blank",
+      "noopener,noreferrer",
+    )
+  }
+
+  function handleClassBooking(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
+    const message = [
+      "Hi Plus Fitness Andheri, I'd like to request a class or trial slot.",
+      `Name: ${data.get("booking-name")}`,
+      `Mobile: ${data.get("booking-mobile")}`,
+      `Session: ${data.get("booking-class")}`,
+      `Date: ${data.get("booking-date")}`,
+      `Preferred time: ${bookingTime}`,
+      "Please confirm whether this slot is available.",
     ].join("\n")
 
     window.open(
@@ -530,6 +575,142 @@ export function BrutalistHome() {
           </div>
         </section>
 
+        <section
+          id="book-class"
+          className="scroll-mt-20 border-y-2 border-[var(--ink)] bg-[var(--signal-red)] py-16 text-white md:py-24"
+        >
+          <div className="mx-auto grid max-w-[1440px] gap-12 px-4 sm:px-6 lg:grid-cols-[0.75fr_1.25fr] lg:items-start lg:gap-20">
+            <div className="lg:sticky lg:top-28">
+              <span className="mb-5 inline-flex border-2 border-white bg-[var(--ink)] px-3 py-2 text-[10px] font-bold uppercase tracking-[0.25em]">
+                Reserve your next session
+              </span>
+              <h2 className="font-display text-[44px] leading-[0.95] sm:text-6xl lg:text-7xl">
+                Pick a date.
+                <br />
+                Claim your time.
+              </h2>
+              <p className="mt-6 max-w-lg text-sm font-medium leading-relaxed text-white/80 md:text-lg">
+                Choose a class or complimentary gym trial. Your request opens in WhatsApp so the
+                Andheri team can confirm availability personally.
+              </p>
+              <div className="mt-8 grid grid-cols-2 gap-3 text-[10px] font-bold uppercase tracking-widest sm:max-w-md">
+                <div className="border-2 border-white/40 p-4">
+                  <CalendarDays className="mb-3 size-6 text-[var(--acid)]" aria-hidden="true" />
+                  Select any upcoming date
+                </div>
+                <div className="border-2 border-white/40 p-4">
+                  <Clock className="mb-3 size-6 text-[var(--acid)]" aria-hidden="true" />
+                  Five daily time windows
+                </div>
+              </div>
+            </div>
+
+            <form
+              onSubmit={handleClassBooking}
+              className="hard-shadow-lg grid gap-6 border-2 border-[var(--ink)] bg-[var(--paper)] p-5 text-[var(--ink)] sm:p-8 md:grid-cols-2 md:p-10"
+            >
+              <div className="md:col-span-2">
+                <p className="font-display text-2xl sm:text-3xl">Build your booking request</p>
+                <p className="mt-2 text-xs font-bold uppercase tracking-widest opacity-60">
+                  All fields are required · Confirmation arrives on WhatsApp
+                </p>
+              </div>
+
+              <label className="grid gap-2 text-[10px] font-bold uppercase tracking-widest">
+                Full name
+                <input
+                  name="booking-name"
+                  type="text"
+                  required
+                  autoComplete="name"
+                  placeholder="Your name"
+                  className="focus-ring h-14 border-2 border-[var(--ink)] bg-white px-4 text-sm font-bold normal-case tracking-normal outline-none"
+                />
+              </label>
+
+              <label className="grid gap-2 text-[10px] font-bold uppercase tracking-widest">
+                Mobile number
+                <input
+                  name="booking-mobile"
+                  type="tel"
+                  required
+                  autoComplete="tel"
+                  placeholder="+91"
+                  className="focus-ring h-14 border-2 border-[var(--ink)] bg-white px-4 text-sm font-bold normal-case tracking-normal outline-none"
+                />
+              </label>
+
+              <label className="grid gap-2 text-[10px] font-bold uppercase tracking-widest">
+                Class or trial
+                <select
+                  name="booking-class"
+                  required
+                  defaultValue=""
+                  className="focus-ring h-14 border-2 border-[var(--ink)] bg-white px-4 text-sm font-bold normal-case tracking-normal outline-none"
+                >
+                  <option value="" disabled>
+                    Choose a session
+                  </option>
+                  {bookableClasses.map((className) => (
+                    <option key={className}>{className}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="grid gap-2 text-[10px] font-bold uppercase tracking-widest">
+                Preferred date
+                <input
+                  name="booking-date"
+                  type="date"
+                  min={minimumBookingDate || undefined}
+                  required
+                  className="focus-ring h-14 border-2 border-[var(--ink)] bg-white px-4 text-sm font-bold normal-case tracking-normal outline-none"
+                />
+              </label>
+
+              <fieldset className="md:col-span-2">
+                <legend className="mb-3 text-[10px] font-bold uppercase tracking-widest">
+                  Preferred time
+                </legend>
+                <div className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+                  {bookingSlots.map((slot) => {
+                    const selected = bookingTime === slot
+                    return (
+                      <button
+                        key={slot}
+                        type="button"
+                        aria-pressed={selected}
+                        onClick={() => setBookingTime(slot)}
+                        className={`focus-ring min-h-12 border-2 border-[var(--ink)] px-3 font-display text-xs transition ${
+                          selected
+                            ? "bg-[var(--acid)] text-[var(--ink)]"
+                            : "bg-white hover:bg-[var(--muted-paper)]"
+                        }`}
+                      >
+                        {slot}
+                      </button>
+                    )
+                  })}
+                </div>
+              </fieldset>
+
+              <div
+                className="border-2 border-[var(--ink)] bg-[var(--muted-paper)] p-4 text-xs font-bold md:col-span-2"
+                aria-live="polite"
+              >
+                Preferred time: <span className="font-display text-[var(--signal-red)]">{bookingTime}</span>
+              </div>
+
+              <button
+                type="submit"
+                className="btn-press focus-ring hard-shadow-lg font-display min-h-16 bg-[var(--ink)] px-6 text-lg text-white md:col-span-2"
+              >
+                Request this slot on WhatsApp
+              </button>
+            </form>
+          </div>
+        </section>
+
         <section id="trainers" className="scroll-mt-20 overflow-hidden bg-[var(--ink)] py-16 md:py-24">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
             <div className="mb-10 flex flex-col items-start gap-3 md:mb-16 md:flex-row md:items-baseline">
@@ -756,7 +937,10 @@ export function BrutalistHome() {
         </section>
       </main>
 
-      <footer className="border-t-2 border-white/10 bg-[var(--dark-surface)] py-16 text-white md:py-24">
+      <footer
+        id="site-footer"
+        className="border-t-2 border-white/10 bg-[var(--dark-surface)] py-16 text-white md:py-24"
+      >
         <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
           <div className="mb-14 grid grid-cols-2 gap-8 md:mb-20 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
             <div className="col-span-2 lg:col-span-1">
@@ -879,19 +1063,24 @@ export function BrutalistHome() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-between gap-5 border-t border-white/10 pt-8 text-center text-[8px] font-bold uppercase tracking-[0.2em] text-white/30 md:flex-row md:pt-12 md:text-left md:text-[10px] md:tracking-[0.3em]">
-            <span>© {new Date().getFullYear()} Plus Fitness 24/7 Andheri.</span>
-            <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-              <a
-                href="https://deepwebstudios.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="focus-ring inline-flex min-h-11 items-center hover:text-white"
-              >
-                Website by DeepWebStudios
-              </a>
-              <span>Made in Mumbai</span>
-            </div>
+          <div
+            id="site-footer-meta"
+            className="grid border-t border-white/10 pt-8 text-center text-[8px] font-bold uppercase tracking-[0.2em] text-white/30 md:grid-cols-3 md:items-center md:pt-12 md:text-[10px] md:tracking-[0.3em]"
+          >
+            <span className="flex min-h-11 items-center justify-center md:justify-start md:text-left">
+              © {new Date().getFullYear()} Plus Fitness 24/7 Andheri.
+            </span>
+            <a
+              href="https://deepwebstudios.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="focus-ring flex min-h-11 items-center justify-center transition-colors hover:text-white"
+            >
+              Website by DeepWebStudios
+            </a>
+            <span className="flex min-h-11 items-center justify-center md:justify-end md:text-right">
+              Made in Mumbai
+            </span>
           </div>
         </div>
       </footer>

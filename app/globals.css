@@ -259,8 +259,8 @@ body {
 .brutalist-page {
   --paper: #f8f4e8;
   --ink: #09090b;
-  --acid: #d2e823;
-  --signal-red: #f04438;
+  --acid: #ff6b00;
+  --signal-red: #2457ff;
   --muted-paper: #e8e3d5;
   --dark-surface: #151518;
   color-scheme: light;
