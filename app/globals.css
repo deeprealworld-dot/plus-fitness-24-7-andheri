@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
@@ -252,5 +253,172 @@ body {
   html {
     @apply font-sans;
     scroll-behavior: smooth;
+  }
+}
+
+.brutalist-page {
+  --paper: #f8f4e8;
+  --ink: #09090b;
+  --acid: #d2e823;
+  --signal-red: #f04438;
+  --muted-paper: #e8e3d5;
+  --dark-surface: #151518;
+  color-scheme: light;
+  font-family: 'Space Grotesk', var(--font-geist-sans), sans-serif;
+}
+
+.brutalist-page .font-display {
+  font-family: 'Dela Gothic One', var(--font-oswald), sans-serif;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.brutalist-page .noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.brutalist-page .hard-shadow {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.brutalist-page .hard-shadow-lg {
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.brutalist-page .btn-press {
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+.brutalist-page .btn-press:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.brutalist-page .btn-press:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.brutalist-page .focus-ring:focus-visible,
+.brutalist-page a:focus-visible,
+.brutalist-page button:focus-visible,
+.brutalist-page input:focus-visible,
+.brutalist-page select:focus-visible,
+.brutalist-page [tabindex='0']:focus-visible {
+  outline: 3px solid var(--acid);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--ink);
+}
+
+.brutalist-page .marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.brutalist-page .marquee-content {
+  display: flex;
+  width: max-content;
+  animation: brutalist-marquee 24s linear infinite;
+  will-change: transform;
+}
+
+.brutalist-page .marquee-group {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+.brutalist-page .halftone {
+  background-image: radial-gradient(var(--ink) 1px, transparent 0);
+  background-size: 8px 8px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.brutalist-page .stagger-reveal > * {
+  opacity: 0;
+  animation: brutalist-reveal 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.brutalist-page .stagger-reveal > :nth-child(2) {
+  animation-delay: 80ms;
+}
+
+.brutalist-page .stagger-reveal > :nth-child(3) {
+  animation-delay: 160ms;
+}
+
+.brutalist-page .stagger-reveal > :nth-child(4) {
+  animation-delay: 240ms;
+}
+
+.brutalist-page .schedule-scroll {
+  scrollbar-color: var(--ink) var(--paper);
+  scrollbar-width: thin;
+}
+
+.brutalist-page .schedule-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.brutalist-page .schedule-scroll::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+.brutalist-page .schedule-scroll::-webkit-scrollbar-thumb {
+  background: var(--ink);
+}
+
+.brutalist-page ::selection {
+  color: var(--ink);
+  background: var(--acid);
+}
+
+@keyframes brutalist-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes brutalist-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brutalist-page .marquee-content {
+    animation: brutalist-marquee 48s linear infinite !important;
+  }
+
+  .brutalist-page .stagger-reveal > * {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .brutalist-page .marquee-group {
+    gap: 3rem;
+    padding-right: 3rem;
   }
 }
