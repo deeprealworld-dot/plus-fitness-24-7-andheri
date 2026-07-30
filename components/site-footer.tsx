@@ -51,7 +51,7 @@ export function SiteFooter() {
             </p>
 
             <Link
-              href="/contact"
+              href="/contact#free-pass-form"
               className="group focus-ring font-display mt-8 inline-flex min-h-11 items-center gap-3 border-b-2 border-[var(--footer-accent)] text-sm text-white transition-colors hover:text-[var(--footer-accent)]"
             >
               Get a free day pass

@@ -59,7 +59,10 @@ export function Contact() {
           </dl>
         </div>
 
-        <div className="hard-shadow-lg border-2 border-[var(--ink)] bg-[var(--acid)] p-6 sm:p-8 lg:col-span-7">
+        <div
+          id="free-pass-form"
+          className="hard-shadow-lg scroll-mt-28 border-2 border-[var(--ink)] bg-[var(--acid)] p-6 sm:p-8 lg:col-span-7"
+        >
           {submitted ? (
             <div
               className="flex min-h-[480px] flex-col items-center justify-center border-2 border-[var(--ink)] bg-[var(--paper)] p-8 text-center"
