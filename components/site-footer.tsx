@@ -1,115 +1,111 @@
-import { Dumbbell } from "lucide-react"
+import { ArrowUpRight, Dumbbell } from "lucide-react"
 import Link from "next/link"
 
 const socials = [
-  { name: "Instagram", icon: "/icons/instagram.svg", href: "https://www.instagram.com/plusfitness24x7andheri/" },
-  { name: "Facebook", icon: "/icons/facebook.svg", href: "https://www.facebook.com/plusfitness24x7andheri/" },
-  { name: "YouTube", icon: "/icons/youtube.svg", href: "https://www.youtube.com/@plusfitnessindia" },
+  { name: "Instagram", href: "https://www.instagram.com/plusfitness24x7andheri/" },
+  { name: "Facebook", href: "https://www.facebook.com/plusfitness24x7andheri/" },
+  { name: "YouTube", href: "https://www.youtube.com/@plusfitnessindia" },
 ]
 
-const columns = [
+const footerGroups = [
   {
-    title: "Explore",
+    index: "01",
+    title: "Quick links",
     links: [
+      { label: "About us", href: "/about" },
       { label: "Memberships", href: "/memberships" },
-      { label: "Trainers", href: "/trainers" },
-      { label: "Gallery", href: "/gallery" },
-      { label: "FAQ", href: "/faq" },
-    ],
-  },
-  {
-    title: "Programs",
-    links: [
-      { label: "Strength", href: "/programs/strength" },
-      { label: "Conditioning", href: "/programs/conditioning" },
-      { label: "Personal Training", href: "/programs/personal-training" },
-      { label: "Group Classes", href: "/programs/group-classes" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About Us", href: "/about" },
       { label: "Careers", href: "/careers" },
+      { label: "Programs", href: "/programs" },
+    ],
+  },
+  {
+    index: "02",
+    title: "Support",
+    links: [
+      { label: "FAQs", href: "/faq" },
+      { label: "Privacy policy", href: "/privacy" },
       { label: "Contact", href: "/contact" },
-      { label: "Privacy", href: "/privacy" },
     ],
   },
 ]
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden border-t border-primary/25 bg-[#07141c]">
-      <div className="brand-rule absolute inset-x-0 top-0 h-1" />
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid gap-10 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded bg-primary text-primary-foreground">
-                <Dumbbell className="size-5" />
+    <footer className="relative overflow-hidden border-t border-white/10 bg-[#0b0b0c] text-white [--footer-accent:#ff5a1f]">
+      <div className="absolute inset-x-0 top-0 h-1 bg-[var(--footer-accent)]" />
+
+      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-5">
+            <Link href="/" className="inline-flex items-center gap-3">
+              <span className="flex size-10 items-center justify-center bg-[var(--footer-accent)] text-white">
+                <Dumbbell className="size-6" />
               </span>
-              <span className="font-heading text-xl font-bold uppercase tracking-wider">
-                <span className="text-primary">Plus</span> <span className="text-accent">Fitness</span>
+              <span className="font-heading text-2xl font-bold uppercase tracking-[0.08em]">
+                <span className="text-[var(--footer-accent)]">Plus</span> Fitness
               </span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
+
+            <p className="mt-6 max-w-sm text-base leading-7 text-white/60">
               World-class equipment, expert trainers and 24/7 access in the heart of Andheri West.
             </p>
-            <div className="mt-6 flex gap-3">
-              {socials.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label={social.name}
-                  className="flex size-9 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-primary hover:text-primary"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="size-4 bg-current"
-                    style={{
-                      maskImage: `url(${social.icon})`,
-                      WebkitMaskImage: `url(${social.icon})`,
-                      maskSize: "contain",
-                      WebkitMaskSize: "contain",
-                      maskRepeat: "no-repeat",
-                      WebkitMaskRepeat: "no-repeat",
-                      maskPosition: "center",
-                      WebkitMaskPosition: "center",
-                    }}
-                  />
-                </a>
-              ))}
-            </div>
+
+            <Link
+              href="/contact"
+              className="group mt-8 inline-flex min-h-11 items-center gap-3 border-b border-[var(--footer-accent)] font-heading text-sm font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:text-[var(--footer-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--footer-accent)]"
+            >
+              Get a free day pass
+              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </Link>
           </div>
 
-          {columns.map((col) => (
-            <div key={col.title}>
-              <h3 className="font-heading text-sm font-semibold uppercase tracking-widest text-foreground">
-                {col.title}
-              </h3>
-              <ul className="mt-4 space-y-3">
-                {col.links.map((link) => (
-                  <li key={link.label}>
+          {footerGroups.map((group) => (
+            <nav
+              key={group.title}
+              aria-label={group.title}
+              className={group.title === "Quick links" ? "lg:col-span-4" : "lg:col-span-3"}
+            >
+              <div className="flex items-baseline gap-3">
+                <span className="font-heading text-xs font-semibold tracking-[0.22em] text-white/35">
+                  {group.index}
+                </span>
+                <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-[var(--footer-accent)]">
+                  {group.title}
+                </h2>
+              </div>
+
+              <ul className="mt-5 border-t border-white/15">
+                {group.links.map((link) => (
+                  <li key={link.label} className="border-b border-white/15">
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground transition-colors hover:text-accent"
+                      className="group flex min-h-13 items-center justify-between gap-4 py-3 font-heading text-base font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--footer-accent)]"
                     >
                       {link.label}
+                      <ArrowUpRight className="size-4 shrink-0 text-[var(--footer-accent)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
 
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Plus Fitness 24/7 Andheri. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground">Working towards a healthier India.</p>
+        <div className="mt-14 flex flex-col gap-6 border-t border-white/10 pt-7 text-sm text-white/45 sm:mt-16 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Plus Fitness 24/7 Andheri.</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-3">
+            {socials.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noreferrer"
+                className="min-h-11 content-center transition-colors hover:text-[var(--footer-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--footer-accent)]"
+              >
+                {social.name}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
