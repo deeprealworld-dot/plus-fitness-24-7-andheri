@@ -1,4 +1,4 @@
-import { ArrowUpRight, Dumbbell } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import Link from "next/link"
 
 const socials = [
@@ -31,18 +31,18 @@ const footerGroups = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-[#0b0b0c] text-white [--footer-accent:#ff5a1f]">
+    <footer
+      id="site-footer"
+      className="relative overflow-hidden border-t-2 border-[var(--ink)] bg-[var(--dark-surface)] text-white [--footer-accent:#ff6b00]"
+    >
       <div className="absolute inset-x-0 top-0 h-1 bg-[var(--footer-accent)]" />
 
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center bg-[var(--footer-accent)] text-white">
-                <Dumbbell className="size-6" />
-              </span>
-              <span className="font-heading text-2xl font-bold uppercase tracking-[0.08em]">
-                <span className="text-[var(--footer-accent)]">Plus</span> Fitness
+            <Link href="/" className="focus-ring inline-flex min-h-11 items-center gap-3">
+              <span className="font-display text-2xl">
+                <span className="text-[var(--footer-accent)]">+</span> Plus Fitness
               </span>
             </Link>
 
@@ -52,7 +52,7 @@ export function SiteFooter() {
 
             <Link
               href="/contact"
-              className="group mt-8 inline-flex min-h-11 items-center gap-3 border-b border-[var(--footer-accent)] font-heading text-sm font-semibold uppercase tracking-[0.16em] text-white transition-colors hover:text-[var(--footer-accent)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--footer-accent)]"
+              className="group focus-ring font-display mt-8 inline-flex min-h-11 items-center gap-3 border-b-2 border-[var(--footer-accent)] text-sm text-white transition-colors hover:text-[var(--footer-accent)]"
             >
               Get a free day pass
               <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -66,10 +66,10 @@ export function SiteFooter() {
               className={group.title === "Quick links" ? "lg:col-span-4" : "lg:col-span-3"}
             >
               <div className="flex items-baseline gap-3">
-                <span className="font-heading text-xs font-semibold tracking-[0.22em] text-white/35">
+                <span className="font-display text-xs text-white/35">
                   {group.index}
                 </span>
-                <h2 className="font-heading text-2xl font-bold uppercase tracking-tight text-[var(--footer-accent)]">
+                <h2 className="font-display text-2xl text-[var(--footer-accent)]">
                   {group.title}
                 </h2>
               </div>
@@ -79,7 +79,7 @@ export function SiteFooter() {
                   <li key={link.label} className="border-b border-white/15">
                     <Link
                       href={link.href}
-                      className="group flex min-h-13 items-center justify-between gap-4 py-3 font-heading text-base font-semibold uppercase tracking-[0.08em] text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--footer-accent)]"
+                      className="group focus-ring font-display flex min-h-13 items-center justify-between gap-4 py-3 text-base text-white/70 transition-colors hover:text-white"
                     >
                       {link.label}
                       <ArrowUpRight className="size-4 shrink-0 text-[var(--footer-accent)] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, useState } from "react"
 import {
   ArrowRight,
   CalendarDays,
@@ -17,6 +17,7 @@ import {
   ShieldCheck,
   X,
 } from "lucide-react"
+import { SiteFooter } from "@/components/site-footer"
 
 const phoneNumber = "+91 90820 92919"
 const whatsappUrl = "https://wa.me/919082092919"
@@ -132,15 +133,12 @@ const trainers = [
 export function BrutalistHome() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [bookingTime, setBookingTime] = useState("18:00")
-  const [minimumBookingDate, setMinimumBookingDate] = useState("")
-
-  useEffect(() => {
+  const [minimumBookingDate] = useState(() => {
     const now = new Date()
-    const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60_000)
+    return new Date(now.getTime() - now.getTimezoneOffset() * 60_000)
       .toISOString()
       .slice(0, 10)
-    setMinimumBookingDate(localDate)
-  }, [])
+  })
 
   function handleEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -187,15 +185,15 @@ export function BrutalistHome() {
         <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-2 px-4 sm:px-6">
           <Link href="/" className="focus-ring flex min-h-11 shrink-0 items-center" aria-label="Plus Fitness Andheri home">
             <span className="font-display hidden text-2xl tracking-tighter md:block">
-              <span className="text-[var(--signal-red)]">+</span> Plus Fitness / 24·7 Andheri
+              <span className="text-[var(--acid)]">+</span> Plus Fitness / 24·7 Andheri
             </span>
             <span className="font-display text-[15px] leading-tight tracking-tighter md:hidden">
-              <span className="text-[var(--signal-red)]">+</span> Plus Fitness
+              <span className="text-[var(--acid)]">+</span> Plus Fitness
             </span>
           </Link>
 
           <nav
-            className="hidden items-center gap-7 text-xs font-bold uppercase tracking-[0.18em] lg:flex xl:gap-8"
+            className="hidden items-center gap-7 text-xs font-bold uppercase tracking-[0.18em] xl:flex xl:gap-8"
             aria-label="Primary navigation"
           >
             {navLinks.map((link) => (
@@ -227,7 +225,7 @@ export function BrutalistHome() {
             <button
               type="button"
               onClick={() => setMenuOpen((open) => !open)}
-              className="btn-press focus-ring hard-shadow flex size-12 items-center justify-center border-2 border-[var(--ink)] bg-white lg:hidden"
+              className="btn-press focus-ring hard-shadow flex size-12 items-center justify-center border-2 border-[var(--ink)] bg-white xl:hidden"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
             >
@@ -238,7 +236,7 @@ export function BrutalistHome() {
 
         {menuOpen ? (
           <nav
-            className="absolute inset-x-0 top-20 border-b-2 border-[var(--ink)] bg-[var(--acid)] px-4 py-3 lg:hidden"
+            className="absolute inset-x-0 top-20 border-b-2 border-[var(--ink)] bg-[var(--acid)] px-4 py-3 xl:hidden"
             aria-label="Mobile navigation"
           >
             {navLinks.map((link, index) => (
@@ -937,153 +935,7 @@ export function BrutalistHome() {
         </section>
       </main>
 
-      <footer
-        id="site-footer"
-        className="border-t-2 border-white/10 bg-[var(--dark-surface)] py-16 text-white md:py-24"
-      >
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6">
-          <div className="mb-14 grid grid-cols-2 gap-8 md:mb-20 md:grid-cols-2 lg:grid-cols-4 lg:gap-12">
-            <div className="col-span-2 lg:col-span-1">
-              <div className="font-display mb-6 text-2xl md:mb-8 md:text-3xl">
-                <span className="text-[var(--signal-red)]">+</span> Plus Fitness
-              </div>
-              <p className="mb-6 max-w-sm text-sm leading-relaxed text-white/40 md:mb-8">
-                Andheri West&apos;s premier 24/7 training facility, built for high-performance
-                results.
-              </p>
-              <div className="flex gap-3 md:gap-4">
-                <a
-                  href="https://www.instagram.com/plusfitness24x7andheri/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Plus Fitness Andheri on Instagram"
-                  className="focus-ring flex size-12 items-center justify-center border border-white/20 transition-colors hover:bg-[var(--acid)] hover:text-[var(--ink)]"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="size-5 bg-current"
-                    style={{
-                      maskImage: "url(/icons/instagram.svg)",
-                      WebkitMaskImage: "url(/icons/instagram.svg)",
-                      maskPosition: "center",
-                      WebkitMaskPosition: "center",
-                      maskRepeat: "no-repeat",
-                      WebkitMaskRepeat: "no-repeat",
-                      maskSize: "contain",
-                      WebkitMaskSize: "contain",
-                    }}
-                  />
-                </a>
-                <a
-                  href="https://www.facebook.com/plusfitness24x7andheri/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Plus Fitness Andheri on Facebook"
-                  className="focus-ring flex size-12 items-center justify-center border border-white/20 transition-colors hover:bg-[var(--acid)] hover:text-[var(--ink)]"
-                >
-                  <span
-                    aria-hidden="true"
-                    className="size-5 bg-current"
-                    style={{
-                      maskImage: "url(/icons/facebook.svg)",
-                      WebkitMaskImage: "url(/icons/facebook.svg)",
-                      maskPosition: "center",
-                      WebkitMaskPosition: "center",
-                      maskRepeat: "no-repeat",
-                      WebkitMaskRepeat: "no-repeat",
-                      maskSize: "contain",
-                      WebkitMaskSize: "contain",
-                    }}
-                  />
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-display mb-5 text-xs text-[var(--acid)] md:mb-8 md:text-xl">
-                Quick links
-              </h3>
-              <ul className="space-y-1 text-[9px] font-bold uppercase tracking-widest text-white/60 md:space-y-4 md:text-sm">
-                <li>
-                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/about">
-                    About us
-                  </Link>
-                </li>
-                <li>
-                  <a className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="#membership">
-                    Memberships
-                  </a>
-                </li>
-                <li>
-                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/careers">
-                    Careers
-                  </Link>
-                </li>
-                <li>
-                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/programs">
-                    Programs
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="font-display mb-5 text-xs text-[var(--acid)] md:mb-8 md:text-xl">
-                Support
-              </h3>
-              <ul className="space-y-1 text-[9px] font-bold uppercase tracking-widest text-white/60 md:space-y-4 md:text-sm">
-                <li>
-                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/faq">
-                    FAQs
-                  </Link>
-                </li>
-                <li>
-                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/privacy">
-                    Privacy policy
-                  </Link>
-                </li>
-                <li>
-                  <Link className="focus-ring inline-flex min-h-11 items-center py-2 hover:text-white" href="/contact">
-                    Contact
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            <div className="col-span-2 sm:col-span-1">
-              <h3 className="font-display mb-5 text-xs text-[var(--acid)] md:mb-8 md:text-xl">
-                Office hours
-              </h3>
-              <div className="space-y-3 text-[9px] font-bold uppercase tracking-widest text-white/60 md:space-y-4 md:text-sm">
-                <p>Staffed hours:</p>
-                <p>Mon–Fri: 07:00–22:00</p>
-                <p>Sat–Sun: 10:00–18:00</p>
-                <p className="text-[var(--signal-red)]">Member access: 24/7</p>
-              </div>
-            </div>
-          </div>
-
-          <div
-            id="site-footer-meta"
-            className="grid border-t border-white/10 pt-8 text-center text-[8px] font-bold uppercase tracking-[0.2em] text-white/30 md:grid-cols-3 md:items-center md:pt-12 md:text-[10px] md:tracking-[0.3em]"
-          >
-            <span className="flex min-h-11 items-center justify-center md:justify-start md:text-left">
-              © {new Date().getFullYear()} Plus Fitness 24/7 Andheri.
-            </span>
-            <a
-              href="https://deepwebstudios.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="focus-ring flex min-h-11 items-center justify-center transition-colors hover:text-white"
-            >
-              Website by DeepWebStudios
-            </a>
-            <span className="flex min-h-11 items-center justify-center md:justify-end md:text-right">
-              Made in Mumbai
-            </span>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   )
 }

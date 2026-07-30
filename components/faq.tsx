@@ -14,11 +14,11 @@ import {
 import { SiteFooter } from "@/components/site-footer"
 
 const navLinks = [
-  { label: "Memberships", href: "/#membership" },
-  { label: "Classes", href: "/#classes" },
-  { label: "Book", href: "/#book-class" },
-  { label: "Trainers", href: "/#trainers" },
-  { label: "Location", href: "/#location" },
+  { label: "About", href: "/about" },
+  { label: "Programs", href: "/programs" },
+  { label: "Memberships", href: "/memberships" },
+  { label: "Trainers", href: "/trainers" },
+  { label: "Gallery", href: "/gallery" },
 ]
 
 const faqs = [
@@ -68,7 +68,7 @@ export function FaqPage() {
           </Link>
 
           <nav
-            className="hidden items-center gap-7 text-xs font-bold uppercase tracking-[0.18em] lg:flex xl:gap-8"
+            className="hidden items-center gap-7 text-xs font-bold uppercase tracking-[0.18em] xl:flex xl:gap-8"
             aria-label="Primary navigation"
           >
             {navLinks.map((link) => (
@@ -93,7 +93,7 @@ export function FaqPage() {
             <button
               type="button"
               onClick={() => setMenuOpen((open) => !open)}
-              className="btn-press focus-ring hard-shadow flex size-11 items-center justify-center border-2 border-[var(--ink)] bg-white sm:size-12 lg:hidden"
+              className="btn-press focus-ring hard-shadow flex size-11 items-center justify-center border-2 border-[var(--ink)] bg-white sm:size-12 xl:hidden"
               aria-label={menuOpen ? "Close menu" : "Open menu"}
               aria-expanded={menuOpen}
             >
@@ -104,7 +104,7 @@ export function FaqPage() {
 
         {menuOpen ? (
           <nav
-            className="absolute inset-x-0 top-20 border-b-2 border-[var(--ink)] bg-[var(--acid)] px-4 py-3 lg:hidden"
+            className="absolute inset-x-0 top-20 border-b-2 border-[var(--ink)] bg-[var(--acid)] px-4 py-3 xl:hidden"
             aria-label="Mobile navigation"
           >
             {navLinks.map((link, index) => (

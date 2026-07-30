@@ -1,3 +1,6 @@
+import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
+
 const trainers = [
   {
     name: "Sharad Shinde",
@@ -21,75 +24,63 @@ const trainers = [
 
 export function Trainers() {
   return (
-    <section id="trainers" className="scroll-mt-20 border-y border-white/[0.06] bg-card/30 py-24 sm:py-32">
+    <section
+      id="trainers"
+      className="scroll-mt-20 border-y-2 border-[var(--ink)] bg-[var(--signal-red)] py-20 text-white sm:py-28"
+    >
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
-          <div>
-          <span className="section-kicker text-primary">
-            The Team
-          </span>
-          <h2 className="mt-5 max-w-3xl font-heading text-5xl font-bold uppercase leading-[0.92] tracking-[-0.035em] text-balance sm:text-6xl">
-            Your Andheri coaching team
-          </h2>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="font-display text-xs text-[var(--acid)]">The team / 02</p>
+            <h2 className="font-display mt-5 text-5xl leading-[0.9] sm:text-7xl">
+              Coaches in your corner
+            </h2>
           </div>
-          <p className="max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty lg:justify-self-end">
-            Certified, experienced, and obsessed with your progress. Meet the people in your corner.
+          <p className="border-l-4 border-[var(--acid)] pl-5 text-lg leading-relaxed text-white/70 lg:col-span-4">
+            Certified, experienced and focused on helping you make measurable progress.
           </p>
         </div>
 
-        <div className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="mt-14 grid gap-7 md:grid-cols-3">
           {trainers.map((trainer, index) => (
-            <div
+            <article
               key={trainer.name}
-              className={`group premium-card relative overflow-hidden rounded-2xl border border-border ${index === 0 ? "lg:col-span-5" : index === 1 ? "lg:col-span-4" : "lg:col-span-3"}`}
+              className="hard-shadow-lg group border-2 border-[var(--ink)] bg-[var(--paper)] text-[var(--ink)]"
             >
-              <div className={`relative overflow-hidden ${index === 0 ? "aspect-[4/5] lg:aspect-[5/6]" : "aspect-[4/5]"}`}>
+              <div className="relative aspect-[4/5] overflow-hidden border-b-2 border-[var(--ink)] bg-[var(--muted-paper)]">
                 <Image
-                  src={trainer.image || "/placeholder.svg"}
+                  src={trainer.image}
                   alt={`${trainer.name}, ${trainer.role}`}
                   fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="size-full object-cover saturate-[0.82] transition duration-700 group-hover:scale-105 group-hover:saturate-100"
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
                 />
+                <span className="font-display absolute left-4 top-4 bg-[var(--acid)] px-3 py-2 text-xs">
+                  0{index + 1}
+                </span>
               </div>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background via-background/85 to-transparent p-6 pt-24">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary">
+              <div className="p-5 sm:p-6">
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--signal-red)]">
                   {trainer.specialty}
                 </p>
-                <h3 className="mt-1 font-heading text-2xl font-bold uppercase tracking-wide">
-                  {trainer.name}
-                </h3>
-                <div className="mt-1 flex items-center justify-between">
-                  <p className="text-sm text-muted-foreground">{trainer.role}</p>
+                <h3 className="font-display mt-2 text-2xl">{trainer.name}</h3>
+                <div className="mt-5 flex items-center justify-between border-t-2 border-[var(--ink)] pt-4">
+                  <p className="text-sm font-bold uppercase">{trainer.role}</p>
                   <a
                     href="https://www.instagram.com/plusfitness24x7andheri/"
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`${trainer.name} on Instagram`}
-                    className="text-muted-foreground transition-colors hover:text-primary"
+                    className="focus-ring flex size-11 items-center justify-center bg-[var(--ink)] text-white transition-colors hover:bg-[var(--acid)] hover:text-[var(--ink)]"
                   >
-                    <span
-                      aria-hidden="true"
-                      className="block size-5 bg-current"
-                      style={{
-                        maskImage: "url(/icons/instagram.svg)",
-                        WebkitMaskImage: "url(/icons/instagram.svg)",
-                        maskSize: "contain",
-                        WebkitMaskSize: "contain",
-                        maskRepeat: "no-repeat",
-                        WebkitMaskRepeat: "no-repeat",
-                        maskPosition: "center",
-                        WebkitMaskPosition: "center",
-                      }}
-                    />
+                    <ArrowUpRight className="size-5" aria-hidden="true" />
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
     </section>
   )
 }
-import Image from "next/image"
