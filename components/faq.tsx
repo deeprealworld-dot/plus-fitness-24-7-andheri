@@ -269,18 +269,17 @@ export function FaqPage() {
                       </button>
                     </h3>
 
-                    {isOpen ? (
-                      <div
-                        id={answerId}
-                        role="region"
-                        aria-labelledby={questionId}
-                        className="border-t-2 border-[var(--ink)] bg-[var(--acid)] px-4 py-5 sm:px-6 md:px-8 md:py-7"
-                      >
-                        <p className="max-w-3xl text-base font-semibold leading-relaxed md:text-lg">
-                          {faq.a}
-                        </p>
-                      </div>
-                    ) : null}
+                    <div
+                      id={answerId}
+                      role="region"
+                      aria-labelledby={questionId}
+                      hidden={!isOpen}
+                      className="border-t-2 border-[var(--ink)] bg-[var(--acid)] px-4 py-5 sm:px-6 md:px-8 md:py-7"
+                    >
+                      <p className="max-w-3xl text-base font-semibold leading-relaxed md:text-lg">
+                        {faq.a}
+                      </p>
+                    </div>
                   </article>
                 )
               })}
