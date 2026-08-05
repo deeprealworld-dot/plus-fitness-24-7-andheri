@@ -54,7 +54,7 @@ export function Testimonials() {
               )}
             >
               <div className="flex items-center justify-between border-b-2 border-[var(--ink)] pb-4">
-                <div className="flex gap-1" aria-label="5 out of 5 stars">
+                <div className="flex gap-1" role="img" aria-label="5 out of 5 stars">
                   {Array.from({ length: 5 }).map((_, starIndex) => (
                     <Star
                       key={starIndex}
