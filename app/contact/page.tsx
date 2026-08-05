@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
-import { SiteHeader } from "@/components/site-header"
-import { SiteFooter } from "@/components/site-footer"
 import { Contact } from "@/components/contact"
+import { PageShell } from "@/components/page-shell"
 
 export const metadata: Metadata = {
   title: "Contact Plus Fitness 24/7 Andheri",
@@ -11,12 +10,12 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader />
-      <main className="pt-16">
-        <Contact />
-      </main>
-      <SiteFooter />
-    </div>
+    <PageShell
+      eyebrow="Start here"
+      title="One message from your first workout."
+      description="Ask about memberships, arrange a club tour or claim a free day pass. The Andheri team will help you take the next step."
+    >
+      <Contact />
+    </PageShell>
   )
 }

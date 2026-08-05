@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowUpRight, Menu, X, Dumbbell } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Menu, Phone, X } from "lucide-react"
 
 const navLinks = [
   { label: "About", href: "/about" },
@@ -17,78 +16,81 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false)
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-white/[0.08] bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-[72px] max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-3" aria-label="Plus Fitness Andheri home">
-          <span className="flex size-9 items-center justify-center rounded-md bg-primary text-primary-foreground transition-transform duration-300 group-hover:-rotate-6">
-            <Dumbbell className="size-5" />
+    <header className="hard-shadow sticky top-0 z-50 border-b-2 border-[var(--ink)] bg-[var(--paper)]">
+      <div className="mx-auto flex h-20 max-w-[1440px] items-center justify-between gap-1 px-4 sm:gap-2 sm:px-6">
+        <Link
+          href="/"
+          className="focus-ring flex min-h-11 shrink-0 items-center"
+          aria-label="Plus Fitness Andheri home"
+        >
+          <span className="font-display hidden text-2xl tracking-tighter md:block">
+            <span className="text-[var(--acid)]">+</span> Plus Fitness / 24·7 Andheri
           </span>
-          <span className="font-heading text-lg font-bold uppercase leading-none tracking-[0.12em] sm:text-xl">
-            <span className="text-primary">Plus</span>{" "}
-            <span className="text-accent">Fitness</span>
-            <small className="mt-1 block text-[8px] tracking-[0.32em] text-muted-foreground">
-              24/7 · Andheri
-            </small>
+          <span className="font-display text-[13px] leading-tight tracking-tighter sm:text-[15px] md:hidden">
+            <span className="text-[var(--acid)]">+</span> Plus Fitness
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+        <nav
+          className="hidden items-center gap-7 text-xs font-bold uppercase tracking-[0.18em] xl:flex xl:gap-8"
+          aria-label="Primary navigation"
+        >
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="relative py-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground transition-colors after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-right after:scale-x-0 after:bg-accent after:transition-transform after:duration-300 hover:text-foreground hover:after:origin-left hover:after:scale-x-100"
+              className="focus-ring py-3 transition-colors hover:text-[var(--acid)]"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="hidden lg:block">
-          <Button
-            size="lg"
-            className="h-10 rounded-full px-5 font-heading font-semibold uppercase tracking-[0.12em]"
-            render={<a href="/contact" />}
+        <div className="flex items-center gap-2 sm:gap-4">
+          <a
+            href="tel:+919082092919"
+            className="focus-ring hidden h-12 items-center gap-2 border-2 border-[var(--ink)] bg-[var(--paper)] px-4 text-xs font-bold transition-colors hover:bg-[var(--muted-paper)] xl:flex"
           >
-            Free Day Pass
-            <ArrowUpRight className="size-4" />
-          </Button>
+            <Phone className="size-4" aria-hidden="true" />
+            Call now
+          </a>
+          <Link
+            href="/contact"
+            className="btn-press focus-ring hard-shadow font-display flex h-11 items-center whitespace-nowrap border-2 border-[var(--ink)] bg-[var(--acid)] px-3 text-[10px] sm:h-12 sm:px-5 sm:text-[11px] md:text-xs"
+          >
+            <span className="hidden sm:inline">Start free trial</span>
+            <span className="sm:hidden">Free trial</span>
+          </Link>
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            className="btn-press focus-ring hard-shadow flex size-11 items-center justify-center border-2 border-[var(--ink)] bg-white sm:size-12 xl:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            {open ? <X className="size-6" /> : <Menu className="size-6" />}
+          </button>
         </div>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          className="inline-flex size-10 items-center justify-center rounded-md border border-border bg-card/70 text-foreground lg:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          {open ? <X className="size-6" /> : <Menu className="size-6" />}
-        </button>
       </div>
 
-      {open && (
-        <div className="glass-surface border-x-0 border-t border-border/60 lg:hidden">
-          <nav className="flex flex-col gap-1 px-4 py-5">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Button
-              size="lg"
-              className="mt-3 h-11 rounded-full font-heading font-semibold uppercase tracking-wide"
-              render={<a href="/contact" onClick={() => setOpen(false)} />}
+      {open ? (
+        <nav
+          className="absolute inset-x-0 top-20 border-b-2 border-[var(--ink)] bg-[var(--acid)] px-4 py-3 xl:hidden"
+          aria-label="Mobile navigation"
+        >
+          {navLinks.map((link, index) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="focus-ring font-display flex min-h-12 items-center justify-between border-b-2 border-[var(--ink)] py-3 text-base last:border-0"
             >
-              Free Day Pass
-            </Button>
-          </nav>
-        </div>
-      )}
+              <span>{link.label}</span>
+              <span aria-hidden="true">0{index + 1}</span>
+            </Link>
+          ))}
+        </nav>
+      ) : null}
     </header>
   )
 }

@@ -50,64 +50,59 @@
 }
 
 :root {
-  color-scheme: dark;
-  --background: oklch(0.16 0.005 250);
-  --foreground: oklch(0.97 0.005 250);
-  --card: oklch(0.21 0.006 250);
-  --card-foreground: oklch(0.97 0.005 250);
-  --popover: oklch(0.21 0.006 250);
-  --popover-foreground: oklch(0.97 0.005 250);
-  --primary: oklch(0.67 0.14 218);
-  --primary-foreground: oklch(0.99 0 0);
-  --secondary: oklch(0.27 0.006 250);
-  --secondary-foreground: oklch(0.97 0.005 250);
-  --muted: oklch(0.27 0.006 250);
-  --muted-foreground: oklch(0.7 0.01 250);
-  --accent: oklch(0.79 0.17 126);
-  --accent-foreground: oklch(0.18 0.04 130);
-  --destructive: oklch(0.62 0.22 25);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.67 0.14 218);
-  --chart-1: oklch(0.67 0.14 218);
-  --chart-2: oklch(0.79 0.17 126);
-  --chart-3: oklch(0.55 0.01 250);
-  --chart-4: oklch(0.4 0.01 250);
-  --chart-5: oklch(0.3 0.01 250);
-  --radius: 0.4rem;
-  --sidebar: oklch(0.21 0.006 250);
-  --sidebar-foreground: oklch(0.97 0.005 250);
-  --sidebar-primary: oklch(0.67 0.14 218);
-  --sidebar-primary-foreground: oklch(0.99 0 0);
-  --sidebar-accent: oklch(0.27 0.006 250);
-  --sidebar-accent-foreground: oklch(0.97 0.005 250);
-  --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.67 0.14 218);
+  color-scheme: light;
+  --background: #f8f4e8;
+  --foreground: #09090b;
+  --card: #fffdf7;
+  --card-foreground: #09090b;
+  --popover: #fffdf7;
+  --popover-foreground: #09090b;
+  --primary: #ff6b00;
+  --primary-foreground: #09090b;
+  --secondary: #e8e3d5;
+  --secondary-foreground: #09090b;
+  --muted: #e8e3d5;
+  --muted-foreground: #57544e;
+  --accent: #2457ff;
+  --accent-foreground: #ffffff;
+  --destructive: #c62828;
+  --border: #09090b;
+  --input: #09090b;
+  --ring: #ff6b00;
+  --chart-1: #ff6b00;
+  --chart-2: #2457ff;
+  --chart-3: #09090b;
+  --chart-4: #e8e3d5;
+  --chart-5: #57544e;
+  --radius: 0;
+  --sidebar: #fffdf7;
+  --sidebar-foreground: #09090b;
+  --sidebar-primary: #ff6b00;
+  --sidebar-primary-foreground: #09090b;
+  --sidebar-accent: #2457ff;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #09090b;
+  --sidebar-ring: #ff6b00;
 }
 
 body {
-  background:
-    radial-gradient(circle at 8% 8%, oklch(0.67 0.14 218 / 12%), transparent 32rem),
-    radial-gradient(circle at 92% 22%, oklch(0.79 0.17 126 / 9%), transparent 30rem),
-    var(--background);
+  background: var(--background);
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 .brand-panel {
-  background:
-    linear-gradient(135deg, oklch(0.23 0.045 225 / 92%), oklch(0.18 0.025 180 / 92%)),
-    linear-gradient(90deg, oklch(1 0 0 / 4%) 1px, transparent 1px);
-  background-size: auto, 28px 28px;
-  border-color: oklch(0.67 0.14 218 / 35%);
+  border-color: var(--foreground);
+  background: var(--primary);
 }
 
 .brand-rule {
-  background: linear-gradient(90deg, var(--primary), var(--accent));
+  background: var(--foreground);
 }
 
 ::selection {
-  background: oklch(0.79 0.17 126 / 35%);
+  color: var(--foreground);
+  background: var(--primary);
 }
 
 .glass-surface {
@@ -196,9 +191,9 @@ body {
 }
 
 .premium-card:hover {
-  transform: translateY(-4px);
-  border-color: oklch(0.67 0.14 218 / 55%);
-  box-shadow: 0 24px 64px oklch(0 0 0 / 30%);
+  transform: translate(2px, 2px);
+  border-color: var(--foreground);
+  box-shadow: 4px 4px 0 var(--foreground);
 }
 
 .premium-card:hover::before {
@@ -206,11 +201,11 @@ body {
 }
 
 .number-watermark {
-  font-family: var(--font-oswald), sans-serif;
+  font-family: 'Dela Gothic One', var(--font-oswald), sans-serif;
   font-size: clamp(5rem, 12vw, 9rem);
   line-height: .7;
   letter-spacing: -.06em;
-  color: oklch(1 0 0 / 4%);
+  color: rgb(9 9 11 / 9%);
   pointer-events: none;
   user-select: none;
 }
@@ -271,6 +266,39 @@ body {
   font-family: 'Dela Gothic One', var(--font-oswald), sans-serif;
   letter-spacing: -0.02em;
   text-transform: uppercase;
+}
+
+.brutalist-page .font-heading {
+  font-family: 'Dela Gothic One', var(--font-oswald), sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.brutalist-page .section-kicker {
+  color: var(--signal-red);
+}
+
+.brutalist-page .section-kicker::before {
+  height: 2px;
+  background: var(--ink);
+}
+
+.brutalist-page .premium-card {
+  border-width: 2px;
+  border-color: var(--ink);
+  border-radius: 0;
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.brutalist-page .brand-panel {
+  border-color: var(--ink);
+  background: var(--acid);
+}
+
+.brutalist-page .rounded-2xl,
+.brutalist-page .rounded-xl,
+.brutalist-page .rounded-lg,
+.brutalist-page .rounded-md {
+  border-radius: 0;
 }
 
 .brutalist-page .noise-overlay {
