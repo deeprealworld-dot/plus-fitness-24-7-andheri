@@ -1,4 +1,5 @@
 import { Star } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 const testimonials = [
   {
@@ -29,34 +30,49 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section id="testimonials" className="scroll-mt-16 py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">
-            Testimonials
-          </span>
-          <h2 className="mt-3 font-heading text-4xl font-bold uppercase tracking-tight text-balance sm:text-5xl">
-            Real people, real results
-          </h2>
+    <section id="testimonials" className="scroll-mt-20 py-20 sm:py-28">
+      <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="font-display text-xs text-[var(--signal-red)]">Testimonials / 04</p>
+            <h2 className="font-display mt-5 text-5xl leading-[0.9] sm:text-7xl">
+              Real people. Real work.
+            </h2>
+          </div>
+          <p className="border-l-4 border-[var(--acid)] pl-5 text-lg font-medium opacity-65 lg:col-span-4">
+            Member experiences from the Andheri community.
+          </p>
         </div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
-          {testimonials.map((t) => (
+        <div className="mt-14 grid gap-7 sm:grid-cols-2">
+          {testimonials.map((testimonial, index) => (
             <figure
-              key={t.name}
-              className="flex flex-col rounded-xl border border-border bg-card p-8"
+              key={`${testimonial.name}-${index}`}
+              className={cn(
+                "hard-shadow flex min-h-72 flex-col border-2 border-[var(--ink)] p-6 sm:p-8",
+                index === 1 || index === 2 ? "bg-[var(--acid)]" : "bg-[var(--paper)]",
+              )}
             >
-              <div className="flex gap-1 text-primary">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-4 fill-current" />
-                ))}
+              <div className="flex items-center justify-between border-b-2 border-[var(--ink)] pb-4">
+                <div className="flex gap-1" role="img" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <Star
+                      key={starIndex}
+                      className="size-4 fill-current"
+                      aria-hidden="true"
+                    />
+                  ))}
+                </div>
+                <span className="font-display text-xs">0{index + 1}</span>
               </div>
-              <blockquote className="mt-4 flex-1 text-lg leading-relaxed text-foreground/90 text-pretty">
-                &ldquo;{t.quote}&rdquo;
+              <blockquote className="mt-7 flex-1 text-xl font-semibold leading-relaxed sm:text-2xl">
+                “{testimonial.quote}”
               </blockquote>
-              <figcaption className="mt-6 border-t border-border/60 pt-4">
-                <p className="font-heading font-semibold uppercase tracking-wide">{t.name}</p>
-                <p className="text-sm text-muted-foreground">{t.detail}</p>
+              <figcaption className="mt-7 flex items-end justify-between gap-4 border-t-2 border-[var(--ink)] pt-4">
+                <p className="font-display text-sm">{testimonial.name}</p>
+                <p className="text-xs font-bold uppercase tracking-[0.16em] opacity-55">
+                  {testimonial.detail}
+                </p>
               </figcaption>
             </figure>
           ))}
