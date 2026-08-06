@@ -92,7 +92,7 @@ export function Contact() {
                 <select
                   id="goal"
                   name="goal"
-                  className="h-12 w-full border-2 border-[var(--ink)] bg-[var(--paper)] px-3 text-sm font-medium outline-none"
+                  className="focus-ring h-12 w-full border-2 border-[var(--ink)] bg-[var(--paper)] px-3 text-sm font-medium outline-none"
                 >
                   <option>Build strength</option>
                   <option>Lose weight</option>
@@ -107,7 +107,7 @@ export function Contact() {
                   name="message"
                   rows={3}
                   placeholder="Tell us what you are looking for…"
-                  className="w-full border-2 border-[var(--ink)] bg-[var(--paper)] px-3 py-3 text-sm font-medium outline-none placeholder:opacity-45"
+                  className="focus-ring w-full border-2 border-[var(--ink)] bg-[var(--paper)] px-3 py-3 text-sm font-medium outline-none placeholder:opacity-45"
                 />
               </label>
               <button
@@ -144,7 +144,7 @@ function Field({
         type={type}
         required
         placeholder={placeholder}
-        className="h-12 w-full border-2 border-[var(--ink)] bg-[var(--paper)] px-3 text-sm font-medium outline-none placeholder:opacity-45"
+        className="focus-ring h-12 w-full border-2 border-[var(--ink)] bg-[var(--paper)] px-3 text-sm font-medium outline-none placeholder:opacity-45"
       />
     </label>
   )

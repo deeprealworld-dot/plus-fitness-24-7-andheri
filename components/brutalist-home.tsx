@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import {
   ArrowRight,
   CalendarDays,
@@ -133,12 +133,24 @@ const trainers = [
 export function BrutalistHome() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [bookingTime, setBookingTime] = useState("18:00")
-  const [minimumBookingDate] = useState(() => {
+  const [minimumBookingDate, setMinimumBookingDate] = useState("")
+
+  useEffect(() => {
     const now = new Date()
-    return new Date(now.getTime() - now.getTimezoneOffset() * 60_000)
+    const dateString = new Date(now.getTime() - now.getTimezoneOffset() * 60_000)
       .toISOString()
       .slice(0, 10)
-  })
+    setMinimumBookingDate(dateString)
+  }, [])
+
+  function openWhatsApp(message: string) {
+    const url = `${whatsappUrl}?text=${encodeURIComponent(message)}`
+    const newWindow = window.open(url, "_blank", "noopener,noreferrer")
+
+    if (!newWindow) {
+      window.location.href = url
+    }
+  }
 
   function handleEnquiry(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -150,11 +162,7 @@ export function BrutalistHome() {
       `Goal: ${data.get("goal")}`,
     ].join("\n")
 
-    window.open(
-      `${whatsappUrl}?text=${encodeURIComponent(message)}`,
-      "_blank",
-      "noopener,noreferrer",
-    )
+    openWhatsApp(message)
   }
 
   function handleClassBooking(event: FormEvent<HTMLFormElement>) {
@@ -170,11 +178,7 @@ export function BrutalistHome() {
       "Please confirm whether this slot is available.",
     ].join("\n")
 
-    window.open(
-      `${whatsappUrl}?text=${encodeURIComponent(message)}`,
-      "_blank",
-      "noopener,noreferrer",
-    )
+    openWhatsApp(message)
   }
 
   return (
@@ -379,14 +383,14 @@ export function BrutalistHome() {
                   Power racks / Dumbbells to 60kg / Hammer Strength
                 </p>
               </div>
-              <div className="font-display absolute right-6 top-5 text-6xl text-[var(--acid)] opacity-20 md:right-8 md:top-8 md:text-8xl">
+              <div className="font-display absolute right-6 top-5 text-6xl text-[var(--acid)] opacity-20 md:right-8 md:top-8 md:text-8xl" aria-hidden="true">
                 01
               </div>
             </article>
 
             <article className="hard-shadow-lg flex min-h-40 flex-col justify-between border-2 border-[var(--ink)] bg-[var(--acid)] p-6 md:col-span-4 md:p-8">
               <div className="font-display text-2xl md:text-3xl">Cardio lab</div>
-              <div className="font-display text-4xl text-black/10">02</div>
+              <div className="font-display text-4xl text-black/10" aria-hidden="true">02</div>
               <div className="space-y-3 md:space-y-4">
                 <p className="text-sm font-bold md:text-base">
                   Treadmills, cycles and stair masters with personal screens.
@@ -440,7 +444,7 @@ export function BrutalistHome() {
           id="membership"
           className="relative scroll-mt-20 overflow-hidden bg-[var(--dark-surface)] py-16 text-white md:py-24"
         >
-          <div className="font-display absolute right-0 top-0 hidden -translate-y-1/2 select-none text-[300px] leading-none text-white/5 lg:block">
+          <div className="font-display absolute right-0 top-0 hidden -translate-y-1/2 select-none text-[300px] leading-none text-white/5 lg:block" aria-hidden="true">
             Plans
           </div>
           <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6">
