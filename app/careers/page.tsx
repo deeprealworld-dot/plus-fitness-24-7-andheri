@@ -60,7 +60,7 @@ export default function CareersPage() {
                 Interested in joining us?
               </h2>
               <p className="mt-5 max-w-2xl font-medium leading-relaxed opacity-65">
-                Current vacancies change. Send the Andheri club your CV and a short introduction,
+                Current vacancies change. Contact the Andheri club to express your interest,
                 and the team will let you know if a suitable role is available.
               </p>
             </div>

@@ -434,8 +434,13 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .brutalist-page .marquee-container {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
   .brutalist-page .marquee-content {
-    animation: brutalist-marquee 48s linear infinite !important;
+    animation: none;
   }
 
   .brutalist-page .stagger-reveal > * {
